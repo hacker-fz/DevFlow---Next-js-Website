@@ -25,11 +25,18 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
+
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     "json"
-  ]
+  ],
+  "files.exclude": {
+    "**/.vscode": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "next.env.d.ts": true
+  }
 }
