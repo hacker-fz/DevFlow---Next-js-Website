@@ -3,6 +3,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -29,6 +30,9 @@ const MobileNavigation = () => {
         className="background-light900_dark200 border-none"
       >
         <SheetTitle className="hidden">Navigation</SheetTitle>
+        <SheetDescription className="hidden">
+          Mobile navigation menu
+        </SheetDescription>
         <Link href="/" className="flex items-center gap-1">
           <Image
             src={"/images/site-logo.svg"}
@@ -40,9 +44,9 @@ const MobileNavigation = () => {
             Dev <span className="text-primary-500">Flow</span>
           </p>
         </Link>
-        <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-auto">
+        <div className="no-scrollbar flex h-full py-6 flex-col justify-between overflow-auto">
           <SheetClose asChild>
-            <section className="flex flex-col gap-6 pt-16 h-full">
+            <section className="flex flex-col gap-6 pt-16">
               <Navlinks isMobileNav />
             </section>
           </SheetClose>

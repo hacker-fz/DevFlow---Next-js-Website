@@ -1,4 +1,4 @@
-" use client";
+"use client";
 import { SheetClose } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
@@ -9,22 +9,22 @@ import React from "react";
 
 const Navlinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
   const pathname = usePathname();
-  const userId = 1;
+  const userId = "1"; // Ensure this is a string
+
   return (
     <>
       {sidebarLinks.map((item) => {
-        const isActive =
-          (pathname.includes(item.route) && item.route.length > 1) ||
-          pathname === item.route;
+        // ✅ Ensure computedRoute is always a string
+        const computedRoute =
+          typeof item.route === "function" ? item.route(userId) : item.route;
 
-        if (item.route === "/profile") {
-          if (userId) item.route = `${item.route}/${userId}`;
-          else return null;
-        }
+        const isActive =
+          (pathname.includes(computedRoute) && computedRoute.length > 1) ||
+          pathname === computedRoute;
 
         const LinkComponent = (
           <Link
-            href={item.route}
+            href={computedRoute} // ✅ Now this is always a string
             key={item.label}
             className={cn(
               isActive
