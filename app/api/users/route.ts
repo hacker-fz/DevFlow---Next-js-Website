@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     if (existingUser) throw new Error("User already exists");
 
     const newUser = await User.create(validatedData.data);
-    return NextResponse.json({ success: true, data: newUser }, { status: 201 });
+    return NextResponse.json({ success: true, data: newUser }, { status: 200 });
   } catch (error) {
     return handleError(error, "api") as ApiErrorResponse;
   }
