@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import QuestionCards from "@/components/cards/QuestionCards";
 import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
@@ -50,22 +51,24 @@ const questions = [
 ];
 
 // testing errorhandling and logging
-
-const test = async () => {
-  try {
-    return await api.users.getAll();
-  } catch (error) {
-    return handleError(error);
-  }
-};
+// const test = async () => {
+//   try {
+//     return await api.users.getAll();
+//   } catch (error) {
+//     return handleError(error);
+//   }
+// };
 
 interface SearchParams {
   searchParams: Promise<{ [Key: string]: string }>; //query = 'react'
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
-  const users = await test();
-  console.log(users);
+  // const users = await test();
+  // console.log(users);
+
+  const session = await auth();
+  console.log("session", session);
 
   const { query = "", filter = "" } = await searchParams; //default value of query is ""
 
